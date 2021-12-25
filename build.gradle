@@ -107,7 +107,7 @@ def announceTask = tasks.register("announceRelease", Exec.class) { announceTask 
   group = "Help"
   description = "Runs .announce script"
   subprojects
-    .findAll { !it.name.contains("ktlint-ruleset-template") }
+    .findAll { !it.name.contains("ktlint-ruleset-template") && !it.name.contains("ktlint-ruleset-opinionated") }
     .each { subproject ->
       announceTask.dependsOn subproject.tasks.named("publishMavenPublicationToMavenCentralRepository")
     }
